@@ -5,7 +5,7 @@ const cors = require("cors");
 const authRouter = require("./routes/auth/auth-routes");
 const adminProductsRouter = require("./routes/admin/products-routes");
 const adminOrderRouter = require("./routes/admin/order-routes");
-const dotenv=require('dotenv');
+const dotenv = require('dotenv');
 dotenv.config();
 
 const shopProductsRouter = require("./routes/shop/products-routes");
@@ -21,7 +21,7 @@ const commonFeatureRouter = require("./routes/common/feature-routes");
 //create a separate file for this and then import/use that file here
 
 mongoose
-  .connect(process.env.DB_URI_LOCAL)
+  .connect(process.env.DB_URI)
   .then(() => console.log("MongoDB connected"))
   .catch((error) => console.log(error));
 
@@ -57,5 +57,13 @@ app.use("/api/shop/search", shopSearchRouter);
 app.use("/api/shop/review", shopReviewRouter);
 
 app.use("/api/common/feature", commonFeatureRouter);
+
+// Serve static files from the "public" folder
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Serve a custom 404 page for any route that doesn't match an existing file
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
 
 app.listen(PORT, () => console.log(`Server is now running on port ${PORT}`));
