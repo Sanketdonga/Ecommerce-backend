@@ -60,11 +60,6 @@ app.use("/api/shop/review", shopReviewRouter);
 app.use("/api/common/feature", commonFeatureRouter);
 
 // Serve static files from the "public" folder
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Serve a custom 404 page for any route that doesn't match an existing file
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+app.use(express.static(path.join(__dirname, '../client/dist')));
 
 app.listen(PORT, () => console.log(`Server is now running on port ${PORT}`));
