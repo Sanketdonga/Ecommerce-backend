@@ -38,7 +38,7 @@ const registerUser = async (req, res) => {
 //login
 const loginUser = async (req, res) => {
   const { email, password } = req.body;
-  console.log(req.req.hostname);
+  console.log(req.host);
   try {
     const checkUser = await User.findOne({ email });
     if (!checkUser)
