@@ -33,8 +33,8 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
-      "http://52.66.113.158:5173",
-      "http://my-shopping-app.shop:5173",
+      "http://52.66.113.158",
+      "http://my-shopping-app.shop",
     ],
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
