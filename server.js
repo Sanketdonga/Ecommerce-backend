@@ -31,11 +31,7 @@ const PORT = process.env.PORT || 5000;
 
 app.use(
   cors({
-    origin: [
-      "http://localhost:5173",
-      "http://52.66.113.158",
-      "http://my-shopping-app.shop",
-    ],
+    origin: "*",
     methods: ["GET", "POST", "DELETE", "PUT"],
     allowedHeaders: [
       "Content-Type",
